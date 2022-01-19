@@ -17,7 +17,7 @@ jobs:
     name: Scan SAML Sample app
     steps:
         - name: if dev
-          run: echo ${{ inputs.running_environment }}
+          run: echo inputs.running_environment
           if: inputs.running_environment == 'dev'
 #          run: echo 'in dev' | ${ENVIRONMENT_SITE} = "www.dev.com"
         - name: if staging
