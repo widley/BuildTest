@@ -7,10 +7,10 @@ on:
         description: 'Environment'
         required: true
         default: 'dev'
-
+        
 env:
-  Environment_Site: ${{ if[[inputs.environment == 'Dev']]; then "https://identity-samlapp-dev.ulplatform.com" }}
-   
+  ENVIRONMENT_SITE: "www.example.com"
+  
 jobs:
   zap_scan:
     runs-on: ubuntu-latest
@@ -20,6 +20,13 @@ jobs:
           uses: actions/checkout@v2
           with:
             ref: master
+        - name: Set Environment Site
+          run:
+            :if [[ inputs.environment == 'dev' ]]; then
+              echo "we're in dev"
+            else
+              echo "we're not in dev"
+            fi
         - name: ZAP Scan
           run: 
             echo Environment_Site
