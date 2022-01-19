@@ -1,0 +1,33 @@
+name: SAML Sample App DAST Scan
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment'
+        required: true
+        default: 'dev'
+
+env:
+  Environment_Site: ${{ if[[inputs.environment == 'Dev']]; then "https://identity-samlapp-dev.ulplatform.com" }}
+   
+jobs:
+  zap_scan:
+    runs-on: ubuntu-latest
+    name: Scan SAML Sample app
+    steps:
+        - name: Checkout
+          uses: actions/checkout@v2
+          with:
+            ref: master
+        - name: ZAP Scan
+          run: 
+            echo Environment_Site
+#           uses: zaproxy/action-full-scan@v0.3.0
+#           with:
+#             token: ${{ secrets.GITHUB_TOKEN }}
+#             docker_name: 'owasp/zap2docker-stable'
+#             target: Environment_Site
+#             rules_file_name: '.zap/rules.tsv'
+#             cmd_options: '-a'
+
