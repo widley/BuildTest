@@ -18,10 +18,10 @@ jobs:
     steps:
         - name: if dev
           if: inputs.environment == 'dev'
-          run: ${ENVIRONMENT_SITE} = "www.dev.com"
+          run: echo 'in dev' | ${ENVIRONMENT_SITE} = "www.dev.com"
         - name: if staging
           if: inputs.environment == 'staging'
-          run: echo "we're in dev"
+          run: echo "we're in staging"
         - name: ZAP Scan
           run: 
             echo ${ENVIRONMENT_SITE}
