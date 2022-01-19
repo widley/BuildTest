@@ -3,7 +3,7 @@ name: SAML Sample App DAST Scan
 on:
   workflow_dispatch:
     inputs:
-      environment:
+      running_environment:
         description: 'Environment'
         required: true
         default: 'dev'
@@ -17,11 +17,11 @@ jobs:
     name: Scan SAML Sample app
     steps:
         - name: if dev
-          run: echo ${{ inputs.environment }}
-          if: inputs.environment == 'dev'
+          run: echo ${{ inputs.running_environment }}
+          if: inputs.running_environment == 'dev'
 #          run: echo 'in dev' | ${ENVIRONMENT_SITE} = "www.dev.com"
         - name: if staging
-          if: inputs.environment == 'staging'
+          if: inputs.running_environment == 'staging'
           run: echo "we're in staging"
         - name: ZAP Scan
           run: 
