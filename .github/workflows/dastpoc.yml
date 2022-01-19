@@ -16,10 +16,6 @@ jobs:
     runs-on: ubuntu-latest
     name: Scan SAML Sample app
     steps:
-        - name: Checkout
-          uses: actions/checkout@v2
-          with:
-            ref: master
         - name: if dev
           if: inputs.environment == 'dev'
           run: echo "we're in dev"
