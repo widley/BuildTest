@@ -24,7 +24,7 @@ jobs:
           run: echo "we're in dev"
         - name: ZAP Scan
           run: 
-            echo ENVIRONMENT_SITE
+            echo ${{ ENVIRONMENT_SITE }}
 #           uses: zaproxy/action-full-scan@v0.3.0
 #           with:
 #             token: ${{ secrets.GITHUB_TOKEN }}
